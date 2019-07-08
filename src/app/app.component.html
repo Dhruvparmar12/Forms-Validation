@@ -1,0 +1,33 @@
+
+
+<div class="container" style="width: 250px;padding-top: 25px">
+
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+
+User Name:<input type="text" name="username" class="text-success" ngModel required #username="ngModel">
+<span class="help-block" *ngIf="!username.valid && username.touched">Please Enter User Name</span>
+<hr>
+Email ID<input type="text" name="email" class="text-success" ngModel required email #email="ngModel">
+<span class="help-block" *ngIf="!email.valid && email.touched">Please Enter Valid Email</span>
+<hr>
+
+City:<select name="city" id="" [ngModel]="defaultSelected">
+
+  <option value="Ahemdabad" selected>Ahemdabad</option>
+  <option value="Baroda">Baroda</option>
+  <option value="Surat">Surat</option>
+</select>
+<hr>
+Hobbies: <textarea name="hobbies" id=""  rows="2" [(ngModel)]="ans"></textarea>
+<hr>
+<p>Your Hobbies: {{ans}}</p>
+
+<div class="radio" *ngFor="let gender of Genders">
+
+<input type="radio" name="gender" ngModel [value]="gender" required>{{gender}}
+
+
+</div>
+<button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+</form>
+</div>
